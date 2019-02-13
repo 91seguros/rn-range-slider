@@ -263,7 +263,7 @@ UIFont *labelFont;
 
 - (void)setLowValue:(int)lowValue {
     int oldLow = _lowValue;
-    _lowValue = CLAMP(lowValue, _min, _highValue - 1);
+    _lowValue = lowValue >= _min ? lowValue : _min;
     [self checkAndFireValueChangeEvent:oldLow oldHigh:_highValue fromUser:false];
     [self setNeedsDisplay];
 }
